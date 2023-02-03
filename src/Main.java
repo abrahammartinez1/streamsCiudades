@@ -7,6 +7,7 @@ class Main {
     public static void main(String[] args) {
         List<ciudad> ciudades = new ArrayList<>();
         ciudades.add(new ciudad("Madrid", "Madrid", 3000000, 600));
+        ciudades.add(new ciudad("Alcobendas", "Madrid", 1000000, 600));
         ciudades.add(new ciudad("Barcelona", "Barcelona", 2000000, 400));
         ciudades.add(new ciudad("Valencia", "Valencia", 800000, 300));
 
