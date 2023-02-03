@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-class main {
+class Main {
     public static void main(String[] args) {
         List<ciudad> ciudades = new ArrayList<>();
         ciudades.add(new ciudad("Madrid", "Madrid", 3000000, 600));
