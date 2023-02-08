@@ -1,9 +1,6 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 class Main {
     public static void main(String[] args) {
@@ -24,7 +21,7 @@ class Main {
         System.out.println("NUMERO DE PROVINCIAS DIFERENTES EN LA LISTA: " + numeroProvincias);
 
         //Obten una coleccion con los nombres de todas las provincias(sin repetir)
-        List<String> nombresProvincias = ciudades.stream().map(ciudad::getProvincia).distinct().collect(Collectors.toList());
+        List<String> nombresProvincias = ciudades.stream().map(ciudad::getProvincia).distinct().toList();
         System.out.println("NOMBRES DE TODAS LAS PROVINCIAS EN LA LISTA: " + nombresProvincias);
 
 
@@ -34,13 +31,13 @@ class Main {
         // Responder a la pregunta de si Todas las ciudades son de más de 50.000 habitantes
         //recorrer todos los elementos a ver si cumplen todos la condicion, en el momento que uno no cumpla la variable sera FALSE
         final boolean[] ciudadGrande = {true};
-        ciudades.stream().forEach((p)-> {
-            if (((Integer) p.getHabitantes())<50000){
+        ciudades.forEach((p)-> {
+            if (( p.getHabitantes())<50000){
                 ciudadGrande[0] = false;
             }
         });
 
-        if (ciudadGrande[0] == false){
+        if (!ciudadGrande[0]){
             System.out.println("TODAS LAS CIUDADES DE LA LISTA NO SON MAYORES DE 50.000 HABITANTES");
         }
         else {
@@ -65,19 +62,19 @@ class Main {
         final String[] provincia2 = new String[1];
         final String[] listaCiudadesGrandes = {""};
 
-        ciudades.stream().forEach((p)-> {
+        ciudades.forEach((p)-> {
             provincia1[0] = p.getProvincia().toUpperCase();
             provincia2[0] = finalProvincia;
 
             if (provincia2[0].equals(provincia1[0])){
-                if ((Integer)p.getHabitantes()>10000){
+                if (p.getHabitantes()>10000){
                     ciudadGrande[0] = true;
                     listaCiudadesGrandes[0] = listaCiudadesGrandes[0] + p.getNombre().toUpperCase() + " ";
                 }
             }
         });
 
-        if (ciudadGrande[0] == false){
+        if (!ciudadGrande[0]){
             System.out.println("TODAS LAS CIUDADES DE LA PROVINCIA DE " + provincia + " TIENEN MENOS DE 10.000 HABITANTES");
         }
         else {
