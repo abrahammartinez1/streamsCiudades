@@ -28,7 +28,8 @@ class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce una provincia: ");
         String provincia = sc.nextLine().toUpperCase();
-        int totalHabitantes = ciudades.stream().filter(c -> c.getProvincia().equals(provincia)).mapToInt(ciudad::getHabitantes).sum();
+        String finalProvincia1 = provincia;
+        int totalHabitantes = ciudades.stream().filter(c -> c.getProvincia().equals(finalProvincia1)).mapToInt(ciudad::getHabitantes).sum();
 
         System.out.println("Numero total de habitantes en " + provincia + ": " + totalHabitantes);
 
@@ -56,7 +57,29 @@ class Main {
             System.out.println("TODAS LAS CIUDADES SI SON MAYORES DE 50.000 HABITANTES");
         }
 
+        //¿Alguna ciudad de una provincia determinada (introducida por el usuario) tiene más de 10.000 habitantes?
+        ciudadGrande[0] = false;
+        System.out.println("Introduce una provincia: ");
+        provincia = sc.nextLine().toUpperCase();
+        String finalProvincia = provincia;
+        final String[] provincia1 = new String[1];
+        final String[] provincia2 = new String[1];
 
+        ciudades.stream().forEach((p)-> {
+            provincia1[0] = p.getProvincia().toUpperCase();
+            provincia2[0] = finalProvincia;
+
+            if (provincia2[0].equals(provincia1[0])){
+                if ((Integer)p.getHabitantes()>10000){ciudadGrande[0] = true;}
+            }
+        });
+
+        if (ciudadGrande[0] == false){
+            System.out.println("TODAS LAS CIUDADES DE LA PROVINCIA DE " + provincia + " TIENEN MENOS DE 10.000 HABITANTES");
+        }
+        else {
+            System.out.println("AL MENOS 1 CIUDAD DE " + provincia + " TIENE MAS DE 10.000 HABITANTES");
+        }
 
     }
 }
